@@ -24,14 +24,16 @@ const App=()=>{
       };
     return (
         <BrowserRouter>
-         <nav>
-           <Link to="/">Home</Link>
+         <ul>
+          <li><Link to="/">Home</Link></li>
          
-         {!isAuth ?<Link to="Login">Login</Link> : <Button onClick={logout}>Logout</Button>}  
-         {!isAuth ? <Link to="Login">Student</Link>:<Link to="/stu">Student</Link>}
-         <h1>current user: {curruser}</h1>
-         </nav>
-       
+         <li>{!isAuth ?<Link to="Login">Login</Link> : <Button onClick={logout}>Logout</Button>}</li>  
+         <li>{!isAuth ? <Link to="Login">Student</Link>:<Link to="/stu">Student</Link>}</li>
+        
+         </ul>
+         
+         <div>current user: {curruser}</div>
+         
         <Routes>
             <Route path="/"  element={<Homepage/>}/>
             <Route path="/login" element={<Login setIsAuth={setIsAuth} setcurruser={setcurruser}/>}/>
@@ -46,9 +48,16 @@ const App=()=>{
            <Route path="/classlogin" element={<Hodlogin logine="/classauth" name="Class Authority" setisAuthau={setisAuthau}/>}/>
            <Route path="/gate" element={<Gate/>}/>
         </Routes>
+        
+        
+        
+
+        
 
    
         </BrowserRouter>
+        
+        
     );
 }
 export default App;
